@@ -1,5 +1,7 @@
 # UrlShortener
 
+ASP.NET Core 6 + Blazor WebAssembly + InMemory database + Xunit + Moq
+
 Below is a list of funcionalities that haven't been implemented, but would be if it would be real application. I ommited them for the sake of simplicity and time. Two first are the most crucial.
 
 This application IS NOT "concurrency safe". It doesn't lock or performs checks during database manipulation/reading. For real app some mechanism should be implemetented - locking, optimistic concurrency (.NET's [ConcurrencyCheck] or [Timestamp]), maybe changed isolation level in the database (could be even "Serializable" in SQL Server, because bussiness logic will be perfomed very fast).
