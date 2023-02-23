@@ -1,0 +1,42 @@
+﻿@page "/admin"
+@using UrlShortener.Shared.SharedModels
+@inject HttpClient Http
+
+<h1>"Admin" panel</h1>
+
+<p>All shortened URLs.</p>
+
+@if (urls == null)
+{
+    <p><em>No URL records.</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Long URL</th>
+                <th>Short URL</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var url in urls)
+            {
+                <tr>
+                    <td>@url.LongUrl</td>
+                    <td><a href="@url.ShortUrl">@url.ShortUrl</a></td>
+                    
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private UrlPairDTO[] urls;
+
+    protected override async Task OnInitializedAsync()
+    {
+        urls = await Http.GetFromJsonAsync<UrlPairDTO[]>("api/urls");
+    }
+}

@@ -1,0 +1,7 @@
+2023-02-22 22:04:17.899 +01:00 [INF] Created new short URL for http://wp.pl. Returned c.
+2023-02-23 00:39:59.576 +01:00 [INF] Created new short URL for http://wp.pl. Returned c.
+2023-02-23 00:40:08.329 +01:00 [INF] Short URL for http://wp.pl already existed. Returned c
+2023-02-23 00:40:08.856 +01:00 [INF] Short URL for http://wp.pl already existed. Returned c
+2023-02-23 00:58:24.404 +01:00 [INF] Created new short URL for http://wp.pl. Returned c.
+2023-02-23 01:08:49.599 +01:00 [INF] Created new short URL for http://wp.pl. Returned c.
+2023-02-23 01:10:13.889 +01:00 [INF] Created new short URL for http://wp.pl. Returned c.

@@ -1,0 +1,77 @@
+﻿@page "/create"
+@using Microsoft.Extensions.Logging
+@using Models
+@using UrlShortener.Shared.SharedModels
+@inject ILogger<Create> Logger
+@inject HttpClient Http
+
+<h1>Create short URL</h1>
+
+<EditForm Model="@urlInputModel" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationMessage For="@(() => urlInputModel.Url)" />
+    <InputText id="name" @bind-Value="urlInputModel.Url" />
+    <button type="submit">Create URL</button>
+</EditForm>
+
+@if(created)
+{
+    <span><a href="@shortUrl">@shortUrl</a></span>
+}
+
+@if(errorOccured)
+{
+    <span>@errorMessage</span>
+}
+
+@code {
+    private UrlInputModel urlInputModel = new UrlInputModel();
+    private bool created = false;
+    private bool errorOccured = false;
+    private string errorMessage;
+    private string shortUrl;
+
+    private async Task HandleValidSubmit()
+    {
+        created = false;
+        errorOccured = false;
+
+        var createUrlRequestDTO = new CreateUrlRequestDTO
+        {
+            LongUrl = urlInputModel.Url
+        };
+
+        var createShortUrlResponse = await Http.PostAsJsonAsync<CreateUrlRequestDTO>("api/urls", createUrlRequestDTO);
+        if (createShortUrlResponse.IsSuccessStatusCode)
+        {
+            bool isHeaderPresent = createShortUrlResponse.Headers.TryGetValues("Location", out IEnumerable<string> locations);
+            string location = locations?.SingleOrDefault();
+            if (isHeaderPresent && location != null)
+            {
+                created = true;
+                errorOccured = false;
+                shortUrl = location;
+            }
+            else
+            {
+                PresentError("Errod occured. Internal server error.");
+            }
+        }
+        else
+        {
+            PresentError($"Errod occured. Status code: {createShortUrlResponse.StatusCode}, reason: {createShortUrlResponse.ReasonPhrase}");
+        }
+    }
+
+    private void HandleInvalidSubmit()
+    {
+        created = false;
+    }
+
+    private void PresentError(string message)
+    {
+        created = false;
+        errorOccured = true;
+        errorMessage = message;
+    }
+}

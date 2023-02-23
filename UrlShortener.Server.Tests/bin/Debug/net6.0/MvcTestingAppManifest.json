@@ -1,0 +1,8 @@
+{
+  "NumeralSystemConversion, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\jdng64\\source\\repos\\exercise\\NumeralSystemConversion",
+  "UrlShortener.Client, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\jdng64\\source\\repos\\exercise\\UrlShortener\\Client",
+  "UrlShortener.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\jdng64\\source\\repos\\exercise\\src\\UrlShortener.Data",
+  "UrlShortener.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\jdng64\\source\\repos\\exercise\\src\\UrlShortener.Domain",
+  "UrlShortener.Server, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\jdng64\\source\\repos\\exercise\\UrlShortener\\Server",
+  "UrlShortener.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\jdng64\\source\\repos\\exercise\\UrlShortener\\Shared"
+}

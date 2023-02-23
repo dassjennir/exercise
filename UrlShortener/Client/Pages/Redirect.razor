@@ -1,0 +1,15 @@
+﻿@page "/dupa"
+@*@page "/{Id:int}"
+@using static System.Net.WebRequestMethods;
+
+<h1>User Id: @Id</h1>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        urls = await Http.GetFromJsonAsync<UrlPairDTO[]>("api/urls");
+    }
+}*@
